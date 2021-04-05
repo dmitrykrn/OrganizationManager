@@ -1,0 +1,27 @@
+
+<div class="modal" *ngIf="visible">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Report</h5>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="modal-body">
+          <label for="text" class="form-label">Report text</label>
+          <textarea id="text" class="form-control"
+                    [ngClass]="{'is-invalid': isInvalid('text')}"
+                    formControlName="text"
+                    placeholder="Enter report text"
+                    style="width:450px; height: 250px">
+          </textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div *ngIf="!personDetails">
+  Loading...
+</div>
+<div *ngIf="personDetails">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <img src="{{pictureUrl}}" />
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-8">
+          <table cellpadding="3">
+            <tr>
+              <td class="font-weight-bold">Name: </td>
+              <td>{{personDetails.person.firstName}} {{personDetails.person.lastName}}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Position: </td>
+              <td> {{personDetails.person.position}}</td>
+            </tr>
+            <tr>
+              <td colspan="3"><hr width="100%" /></td>
+            </tr>
+            <tr *ngIf="showManager">
+              <td class="font-weight-bold">Manager: </td>
+              <td>{{personDetails.manager.firstName}} {{personDetails.manager.lastName}}</td>
+              <td><button class="btn btn-outline-primary" (click)="createReport()">Report</button></td>
+            </tr>
+            <tr *ngIf="!showManager">
+              <td colspan="2">No manager found...</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="card">
+    <h5 class="card-header">
+      My tasks
+    </h5>
+    <div class="card-body">
+      <table class='table' *ngIf="showTasks">
+        <tr>
+          <th>Task</th>
+          <th>Due Date</th>
+        </tr>
+        <tr *ngFor="let task of personDetails.tasks">
+          <td>{{ task.text }}</td>
+          <td>{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
+        </tr>
+      </table>
+      <div *ngIf="!showTasks">
+        No tasks found...
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="card">
+    <h5 class="card-header">
+      My subordinates
+    </h5>
+    <div class="card-body">
+      <table class="table table-striped" *ngIf="showSubordinates">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Position</th>
+          <th>Task</th>
+        </tr>
+        <tr *ngFor="let subordinate of personDetails.subordinates">
+          <td>{{ subordinate.firstName }}</td>
+          <td>{{ subordinate.lastName }}</td>
+          <td>{{ subordinate.position }}</td>
+          <td>
+            <button class="btn btn-outline-primary" (click)="createTask(subordinate.id)">Assign Task</button>
+          </td>
+        </tr>
+      </table>
+      <div *ngIf="!showSubordinates">
+        No subordinates found...
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="card">
+    <h5 class="card-header">
+      Reports of my subordinates
+    </h5>
+    <div class="card-body">
+      <table class="table table-striped" *ngIf="showReportList">
+        <tr>
+          <th>From</th>
+          <th>Date</th>
+          <th>Report</th>
+        </tr>
+        <tr *ngFor="let report of personDetails.reports">
+          <td style="min-width: 150px;">{{ subordinate(report.ownerId) }}</td>
+          <td style="min-width: 150px;">{{ report.date | date:'dd/MM/yyyy' }}</td>
+          <td>{{ report.text }}</td>
+        </tr>
+      </table>
+      <div *ngIf="!showReportList">
+        No reports found...
+      </div>
+    </div>
+  </div>
+  <app-report [(visible)]="showReportDialog" [ownerId]="personDetails.person.id"></app-report>
+  <app-task [(visible)]="showTaskDialog" [ownerId]="subordinateId"></app-task>
+</div>
