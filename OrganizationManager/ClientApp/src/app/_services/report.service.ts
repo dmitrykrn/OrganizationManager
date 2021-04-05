@@ -5,18 +5,15 @@ import { Observable } from 'rxjs';
 import { getBaseUrl } from '../../main';
 import { Person } from '../_model/Person';
 import { Report } from '../_model/Report';
+import { BaseService } from './BaseService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ReportService {
-  private baseUrl: string;
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+export class ReportService extends BaseService  {
 
   constructor(private http: HttpClient) {
-    this.baseUrl = getBaseUrl();
+    super();
   }
 
   public saveReport(text: string, ownerId: number): Observable<Report> {
@@ -27,9 +24,5 @@ export class ReportService {
 
     const url = this.getUrl('api/report');
     return this.http.post<Report>(url, report);
-  }
-
-  private getUrl(url: string) {
-    return this.baseUrl.concat(url);
   }
 }

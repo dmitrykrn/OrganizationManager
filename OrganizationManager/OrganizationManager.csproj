@@ -29,6 +29,7 @@
     <None Remove="ClientApp\src\app\_model\PersonList.ts" />
     <None Remove="ClientApp\src\app\_model\Report.ts" />
     <None Remove="ClientApp\src\app\_model\Task.ts" />
+    <None Remove="ClientApp\src\app\_services\BaseService.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\_model\PersonList.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_model\Report.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_model\Task.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_services\BaseService.ts" />
   </ItemGroup>
 
   <ItemGroup>

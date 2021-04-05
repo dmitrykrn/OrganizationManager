@@ -1,9 +1,9 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Organization Manager</a>
+      <a class="navbar-brand text-white" [routerLink]="['/']">Organization Manager</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -21,12 +21,12 @@
       >
         <ul class="navbar-nav flex-grow">
           <li class="nav-item"
-              [routerLinkActive]="['link-active']"
+              [routerLinkActive]="['link-active', 'font-weight-bold']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link text-white" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/employees']">Employees</a>
+          <li class="nav-item" [routerLinkActive]="['link-active', 'font-weight-bold']">
+            <a class="nav-link text-white" [routerLink]="['/employees']">Employees</a>
           </li>
         </ul>
       </div>
