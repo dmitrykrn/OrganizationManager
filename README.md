@@ -10,3 +10,6 @@ In order to build and run the project locally:
 * Install Visual Studio 2019.
 * Clone repository.
 * Build and run the solution. No need to run *npm install* and *ng serve* commands. Angular CLI is already integrated and runs in the background automatically.
+
+# Live Demo
+https://organizationmanagerapp.azurewebsites.net/
