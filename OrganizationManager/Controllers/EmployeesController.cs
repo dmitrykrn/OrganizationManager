@@ -20,7 +20,6 @@ namespace OrganizationManager.Controllers
             _personService = personService;
         }
 
-        // GET: api/<EmployeeController>
         [HttpGet]
         public PersonList Get()
         {
@@ -28,30 +27,11 @@ namespace OrganizationManager.Controllers
             return personList;
         }
 
-        // GET api/<EmployeeController>/5
         [HttpGet("{id}")]
         public PersonDetails Get(int id)
         {
             var personDetails = _personService.GetPersonDetails(id);
             return personDetails;
-        }
-
-        // POST api/<EmployeeController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<EmployeeController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<EmployeeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

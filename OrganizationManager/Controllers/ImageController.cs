@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,37 +12,18 @@ namespace OrganizationManager.Controllers
     [ApiController]
     public class ImageController : ControllerBase
     {
-        // GET: api/<ImageController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        IHostEnvironment _hostEnv;
+
+        public ImageController(IHostEnvironment hostEnv)
         {
-            return new string[] { "value1", "value2" };
+            _hostEnv = hostEnv;
         }
 
-        // GET api/<ImageController>/5
         [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Images", name);
-            return this.PhysicalFile(filePath, "image/png");
-        }
-
-        // POST api/<ImageController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ImageController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ImageController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var filePath = Path.Combine(_hostEnv.ContentRootPath, "Data", "Images", name);
+            return this.PhysicalFile(filePath, "image/jpg");
         }
     }
 }

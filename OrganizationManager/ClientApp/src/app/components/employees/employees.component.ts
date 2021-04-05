@@ -15,11 +15,7 @@ export class EmployeesComponent implements OnInit {
   constructor(
     private employeesService: EmployeesService,
     private router: Router,
-  ) {
-    this.personList = {
-      persons: []
-    } as PersonList;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.fetchEmployees();
@@ -29,9 +25,6 @@ export class EmployeesComponent implements OnInit {
     this.employeesService.getEmployees().subscribe(
       (personList: PersonList) => {
         this.personList = personList;
-      },
-      error => {
-
       }
     );
   }
@@ -39,5 +32,4 @@ export class EmployeesComponent implements OnInit {
   viewDetails(personId: number) {
     this.router.navigateByUrl("/employee-details/" + personId);
   }
-
 }

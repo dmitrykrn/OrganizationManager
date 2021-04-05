@@ -19,21 +19,6 @@ namespace OrganizationManager.Controllers
             _reportService = reportService;
         }
         
-        // GET: api/<ReportController>
-        [HttpGet]
-        public IEnumerable<Report> Get()
-        {
-            return null;
-        }
-
-        // GET api/<ReportController>/5
-        [HttpGet("{id}")]
-        public Report Get(int id)
-        {
-            return null;
-        }
-
-        // POST api/<ReportController>
         [HttpPost]
         public void Post([FromBody] Report report)
         {
@@ -43,20 +28,8 @@ namespace OrganizationManager.Controllers
             }
             catch (Exception exp)
             {
-                throw new Exception("Failed to create report", exp);
+                throw new Exception("Failed to create a report", exp);
             }
-        }
-
-        // PUT api/<ReportController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Report value)
-        {
-        }
-
-        // DELETE api/<ReportController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

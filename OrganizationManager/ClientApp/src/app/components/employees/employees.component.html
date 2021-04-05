@@ -1,5 +1,7 @@
-
-<table class='table table-striped' aria-labelledby="tableLabel">
+<div *ngIf="!personList">
+  Loading...
+</div>
+<table *ngIf="personList" class='table table-striped' aria-labelledby="tableLabel">
   <thead>
     <tr>
       <th>First Name</th>
